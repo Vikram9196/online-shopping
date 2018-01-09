@@ -12,11 +12,11 @@
   </context-param>
   
   
-  <listener>
+<listener>
   
   <listener-class>
   
-  org.springframework.context.ContextLoaderListener
+  org.springframework.web.context.ContextLoaderListener
   
   
   </listener-class>
@@ -24,8 +24,6 @@
   
   
   </listener>
-  
-  
   
   <servlet>
   <servlet-name>dispatcher</servlet-name>
