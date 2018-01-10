@@ -14,7 +14,8 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.model.User;
+import com.DaoImpl.*;
+import com.model.*;
 
 @Configuration
 @ComponentScan("com")
@@ -54,7 +55,41 @@ public class hiberConfig {
 		LocalSessionFactoryBuilder lsfb= new LocalSessionFactoryBuilder(datasource);
 		lsfb.addProperties(getHiber());
 		lsfb.addAnnotatedClass(User.class);
+		lsfb.addAnnotatedClass(Supplier.class);
+		lsfb.addAnnotatedClass(Category.class);
+		lsfb.addAnnotatedClass(Product.class);
 		return lsfb.buildSessionFactory();
+	}
+	
+	
+	@Autowired
+	@Bean(name="UserDaoImpl")
+	public UserDaoImpl saveUserData(SessionFactory sf)
+	{
+		return new UserDaoImpl(sf);
+				
+	}
+	
+
+	@Autowired
+	@Bean(name="SupplierDaoImpl")
+	public SupplierDaoImpl saveSupplierData(SessionFactory sf) 
+	{
+		return new SupplierDaoImpl(sf);
+	}
+	
+	@Autowired
+	@Bean(name="CategoryDaoImpl")
+	public CategoryDaoImpl saveCategoryData(SessionFactory sf) 
+	{
+		return new CategoryDaoImpl(sf);
+	}
+	
+	@Autowired
+	@Bean(name="ProductDaoImpl")
+	public ProductDaoImpl saveProductData(SessionFactory sf) 
+	{
+		return new ProductDaoImpl(sf);
 	}
 	
 	@Autowired
