@@ -35,17 +35,17 @@
  <li> <a href="index">Home</a></li>
  <li><a href="contact"><i class="fa fa-address-book" aria-hidden="true"></i></a></li>
  <li><a href="productList">Product List</a></li>
- <li><a href="adding">Admin</a></li>
+ <li><a href="${pageContext.request.contextPath }/admin/adding">Admin</a></li>
  <li class="dropdown">
  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
  
   <ul class="dropdown-menu">
-       <li><a href="${pageContext.request.contextPath}/productList">Product</a></li>
-       <li><a href="${pageContext.request.contextPath}/supplierList">Supplier</a></li>
-       <li><a href="${pageContext.request.contextPath}/categoryList">Category</a></li>
+       <li><a href="${pageContext.request.contextPath}/admin/productList">Product</a></li>
+       <li><a href="${pageContext.request.contextPath}/admin/supplierList">Supplier</a></li>
+       <li><a href="${pageContext.request.contextPath}/admin/categoryList">Category</a></li>
   </ul>
 </li>
- <li><a href="goToRegister">Register</a></li>
+ 
  
  
 
@@ -68,6 +68,21 @@
  
  </li>
  </ul>
+ 
+ 
+ <ul class="nav navbar-nav navbar pull-right">
+				<c:if test="${pageContext.request.userPrincipal.name==null }">
+   					<li><a href="${pageContext.request.contextPath }/goToRegister">Sign up</a></li>  
+  					<li><a href="${pageContext.request.contextPath }/goToLogin">Login</a></li> 
+  				</c:if>
+  				
+  				<c:if test="${pageContext.request.userPrincipal.name != null }">
+  					<li><a>Welcome: ${pageContext.request.userPrincipal.name }</a></li>
+  					<li><a href="${pageContext.request.contextPath }/logout">Logout</a></li>
+  				</c:if>
+    				
+    				
+    			</ul>
  </div>
  
  </div>

@@ -71,4 +71,27 @@ public class indexController {
 
 	}
 
+	@RequestMapping("/goToLogin")
+	public String login()
+	{
+	return "login";
+	}
+		
+	@RequestMapping("/userLogged")
+	public String userLogged()
+	{
+	return "redirect:/index";
+	}
+
+	@RequestMapping("/error")
+	public String error()
+	{
+	return "error";
+	}
+
+	@RequestMapping("/reLogin")
+	public String relogin()
+	{
+	return "redirect:/goToLogin";
+	}
 }

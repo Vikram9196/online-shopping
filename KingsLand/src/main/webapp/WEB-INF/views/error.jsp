@@ -28,7 +28,7 @@
 <h1>Authentication Error!!!</h1>
 <h3>Go back to Home or <a href="${pageContext.request.contextPath }/goToLogin">Login</a> page.</h3>
 <br><br>
-<img src="<c:url value="/resources/images/error.jpg" />" alt="error" height="35%" width="70%">
+
 
 
 </div>

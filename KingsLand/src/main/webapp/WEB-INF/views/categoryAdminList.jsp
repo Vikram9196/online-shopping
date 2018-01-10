@@ -44,8 +44,8 @@
 <td><c:out value="${p.cid }"></c:out></td>
 <td><c:out value="${p.categoryName }"></c:out></td>
 <td class="span4"><c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-<a role="button" class="btn btn-info"  href="#">Edit</a>
-<a class="btn btn-danger" role="button" href="#">Delete</a></td>
+<a role="button" class="btn btn-info"  href="${contextRoot }/admin/Edit">Edit</a>
+<a class="btn btn-danger" role="button" href="${contextRoot }/admin/Delete">Delete</a></td>
 </tr>
 </c:forEach>
 </table>

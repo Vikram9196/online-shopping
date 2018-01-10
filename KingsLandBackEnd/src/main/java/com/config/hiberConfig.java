@@ -60,6 +60,8 @@ public class hiberConfig {
 		lsfb.addAnnotatedClass(Supplier.class);
 		lsfb.addAnnotatedClass(Category.class);
 		lsfb.addAnnotatedClass(Product.class);
+		lsfb.addAnnotatedClass(Orders.class);
+		lsfb.addAnnotatedClass(Cart.class);
 		return lsfb.buildSessionFactory();
 	}
 	
@@ -92,6 +94,21 @@ public class hiberConfig {
 	public ProductDaoImpl saveProductData(SessionFactory sf) 
 	{
 		return new ProductDaoImpl(sf);
+	}
+	
+
+	@Autowired
+	@Bean(name="CartDaoImpl")
+	public CartDaoImpl saveCartData(SessionFactory sf) 
+	{
+		return new CartDaoImpl(sf);
+	}
+	
+	@Autowired
+	@Bean(name="OrdersDaoImpl")
+	public OrdersDaoImpl saveOrderData(SessionFactory sf) 
+	{
+		return new OrdersDaoImpl(sf);
 	}
 	
 	@Autowired
