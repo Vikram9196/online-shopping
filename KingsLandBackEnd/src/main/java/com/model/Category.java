@@ -16,7 +16,7 @@ public class Category {
 	
 	@Id
 	private int cid;
-	private String categoryNname;
+	private String categoryName;
 	
 	
 	public int getCid() {
@@ -26,15 +26,21 @@ public class Category {
 		this.cid = cid;
 	}
 	
-	public String getCategoryNname() {
-		return categoryNname;
+	
+	
+	
+	
+	public String getCategoryName() {
+		return categoryName;
 	}
-	public void setCategoryNname(String categoryNname) {
-		this.categoryNname = categoryNname;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
-	
-	
-	
+
+
+
+
+
 	@OneToMany(targetEntity=Product.class, fetch=FetchType.EAGER, mappedBy="category")
 	private Set<Product> product =new HashSet<Product>(0);
 

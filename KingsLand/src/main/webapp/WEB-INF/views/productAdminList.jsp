@@ -57,7 +57,7 @@
 <td><c:out value="${p.stock }"></c:out></td>
 <td><img src="${pageContext.request.contextPath }/resources/images${p.imgName}" height="50px" width="50px"></td>
 <td ><c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-<a class="btn btn-info" role="button"  href="${contextRoot }/admin/updateProd?id=<c:out value="${p.pid }"></c:out>">Edit</a>
+<a class="btn btn-info" role="button"  href="${contextRoot }/admin/updateProd?pid=<c:out value="${p.pid }"></c:out>">Edit</a>
 <a class="btn btn-danger" role="button" href="<c:url value="/admin/deleteprod/${p.pid }"/>">Delete</a></td>
 </tr>
 </c:forEach>

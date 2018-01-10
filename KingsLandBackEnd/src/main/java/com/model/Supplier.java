@@ -18,7 +18,7 @@ public class Supplier implements Serializable{
 	
 	@Id
 	private int sid;
-	private String supplerName;
+	private String supplierName;
 	
 	
 	
@@ -31,12 +31,20 @@ public class Supplier implements Serializable{
 	
 	
 	
-	public String getSupplerName() {
-		return supplerName;
+	
+
+
+
+	public String getSupplierName() {
+		return supplierName;
 	}
-	public void setSupplerName(String supplerName) {
-		this.supplerName = supplerName;
+	public void setSupplierName(String supplierName) {
+		this.supplierName = supplierName;
 	}
+
+
+
+
 
 
 

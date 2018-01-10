@@ -60,5 +60,43 @@ public class ProductDaoImpl  implements ProductDao{
 		return prod;
 	}
 	
+	public List<Product> getProdByCatId(int cid)
+	{
+		Session session=sessionFactory.openSession();
+		List<Product> prod=null;
+		try
+		{
+			session.beginTransaction();
+			prod=session.createQuery("from Product where cid="+cid).list();
+			session.getTransaction().commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			session.getTransaction().rollback();
+		}
+		
+		return prod;
+		
+	}
+	
+	
+
+	public void update(Product p)
+	{
+		Session session	=sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(p);
+		session.getTransaction().commit();
+	}
+	
+	public void deleteProd(int pid)
+	{
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		Product p=(Product)session.get(Product.class, pid);
+		session.delete(p);
+		session.getTransaction().commit();
+	}
 	
 }
