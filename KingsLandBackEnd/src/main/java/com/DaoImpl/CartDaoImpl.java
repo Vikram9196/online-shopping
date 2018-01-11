@@ -40,7 +40,7 @@ public class CartDaoImpl implements CartDao{
 		try
 		{
 			session.beginTransaction();
-			cr=(List<Cart>)session.createQuery("from Cart where userMailId:=email").setString("email", userId).list();
+			cr=(List<Cart>)session.createQuery("from Cart where userMailId=:email").setString("email", userId).list();
 			session.getTransaction().commit();
 		}
 		catch(HibernateException e)
@@ -55,7 +55,7 @@ public class CartDaoImpl implements CartDao{
 		Session session=sessionFactory.openSession();
 		Cart cr=null;
 		session.beginTransaction();
-		cr = (Cart)session.createQuery("from Cart where userMailId=: email and cartProductId=: id").setString("email", userEmail).setInteger("id", cartProductId).uniqueResult();
+		cr = (Cart)session.createQuery("from Cart where userMailId=:email and cartProductId=:id").setString("email", userEmail).setInteger("id", cartProductId).uniqueResult();
 		session.getTransaction().commit();
 		return cr;
 	}

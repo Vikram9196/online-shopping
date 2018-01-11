@@ -32,20 +32,20 @@
 <div class="row">
 <div class="col-md-4 item-photo">
 
-<img style="max-width:100%; margin-top:30px;" src="${pageContext.request.contextPath }/resources/images/${prod.imgName}"/>
+<img style="max-width:100%; margin-top:30px;" src="${pageContext.request.contextPath }/resources/images/${product.imgName}"/>
 </div>
 
 <div class="col-md-5" style="border:opx solid  gray">
-<h3>${prod.productName }</h3>
-<h4>${prod.description }</h4>
-<h4>${prod.price }</h4>
-<h5>${prod.supplierName }</h5>
+<h3>P ${product.productName } </h3>
+<h4>${product.description }</h4>
+<h4>Price - ${product.price } Rs.</h4>
+<h5>Supplier - ${product.supplier.supplierName }</h5>
 <div class="section" style="padding-bottom:20px;">
 <form action="${pageContext.request.contextPath }/addToCart" method="post">
-<input type="hidden" value="${prod.pid }" name="pid"/> 
-<input type="hidden" value="${prod.price }" name="pPrice"/> 
-<input type="hidden" value="${prod.productName}" name="pName"/> 
-<input type="hidden" value="${prod.imgName }" name="imgName"/> 
+<input type="hidden" value="${product.pid }" name="pId"/> 
+<input type="hidden" value="${product.price }" name="pPrice"/> 
+<input type="hidden" value="${product.productName}" name="pName"/> 
+<input type="hidden" value="${product.imgName }" name="imgName"/> 
 <label>Qty:</label>
 <input type="number" class="form-control" name="pQty" required/><br><br>
 <input class="btn btn-warning btn-lg" type="submit" value="Add To Cart">

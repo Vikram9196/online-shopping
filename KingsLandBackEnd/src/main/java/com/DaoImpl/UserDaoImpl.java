@@ -2,6 +2,7 @@ package com.DaoImpl;
 
 import java.io.Serializable;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,23 @@ public class UserDaoImpl implements Serializable
 		
 	}
 	
-	
+	public User findUserByEmail(String email)
+	{
+		Session session=sessionFactory.openSession();
+		User u=null;
+		try
+		{
+			session.beginTransaction();
+			u=session.get(User.class, email);
+			session.getTransaction().commit();
+		}
+		catch(HibernateException e)
+		{
+			System.out.println(e.getMessage());
+			session.getTransaction().rollback();
+		}
+		
+		return u;
+	}
 
 }

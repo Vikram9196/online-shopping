@@ -1,3 +1,4 @@
+
 package com.controller;
 
 import java.io.BufferedOutputStream;
@@ -43,7 +44,12 @@ public class adminController {
 		return "adding";
 	}
 	
-	@RequestMapping(value="/admin/saveSupp", method=RequestMethod.POST)
+	@RequestMapping("/admin/index")
+	public String home() {
+		return "index";
+	}
+	
+	@RequestMapping(value="/saveSupp", method=RequestMethod.POST)
 	@Transactional
 	public ModelAndView saveSuppData(@RequestParam("sid")int sid,@RequestParam("supplierName")String supplierName){
 		 ModelAndView mv=new  ModelAndView();
@@ -55,7 +61,7 @@ public class adminController {
 		 return mv;
 	}
 	
-	@RequestMapping(value="/admin/saveCat", method=RequestMethod.POST)
+	@RequestMapping(value="/saveCat", method=RequestMethod.POST)
 	@Transactional
 	public ModelAndView saveCatData(@RequestParam("cid")int cid,@RequestParam("categoryName")String categoryName){
 		 ModelAndView mv=new  ModelAndView();
@@ -70,14 +76,14 @@ public class adminController {
 		 
 	}
 	
-	@RequestMapping(value="/admin/saveProduct", method=RequestMethod.POST)
+	@RequestMapping(value="/saveProduct", method=RequestMethod.POST)
 	@Transactional
 	public String saveProd(HttpServletRequest request, @RequestParam("file")MultipartFile file)
 	{
 		Product prod = new Product();
 		prod.setProductName(request.getParameter("pName"));
 		prod.setPrice(Double.parseDouble(request.getParameter("pPrice")));
-		prod.setDescription(request.getParameter("pDescrition"));
+		prod.setDescription(request.getParameter("pDescription"));
 		prod.setStock(Integer.parseInt(request.getParameter("pStock")));
 	//	String cat=request.getParameter("pCategory");
 	//	String sat=request.getParameter("pSupplier");
@@ -137,14 +143,14 @@ public class adminController {
 	}
 	
 
-	@RequestMapping("/admin/deleteProd/{pid}")
+	@RequestMapping("/deleteProd/{pid}")
 	public String deleteProduct(@PathVariable("pid")int pid)
 	{
 		productDaoImpl.deleteProd(pid);
 		return "redirect:/admin/productList?del";
 	}
 	
-	@RequestMapping("/admin/updateProd")
+	@RequestMapping("/updateProd")
 	public ModelAndView updateProduct(@RequestParam("pid")int pid)
 	{
 		ModelAndView mv= new ModelAndView();
@@ -156,29 +162,31 @@ public class adminController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/admin/productUpdate", method=RequestMethod.POST)
+	@RequestMapping(value="/productUpdate", method=RequestMethod.POST)
 	//@Transactional
-	public String udateProd(HttpServletRequest request, @RequestParam("file")MultipartFile file)
+	public String updateProd(HttpServletRequest request, @RequestParam("file")MultipartFile file)
 	{
-		String pid = request.getParameter("pid");
+		String pid = request.getParameter("pId");
 		Product prod = new Product();
 		prod.setPid(Integer.parseInt(pid));
 		prod.setProductName(request.getParameter("pName"));
 		prod.setPrice(Double.parseDouble(request.getParameter("pPrice")));
-		prod.setDescription(request.getParameter("pDescrition"));
+		prod.setDescription(request.getParameter("pDescription"));
 		prod.setStock(Integer.parseInt(request.getParameter("pStock")));
-		String cat=request.getParameter("pCategory");
-		String sat=request.getParameter("pSupplier");
-		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(cat)));
-		prod.setSupplier(supplierDaoImpl.findBySuppId(Integer.parseInt(sat)));
+		//String cat=request.getParameter("pCategory");
+		//String sat=request.getParameter("pSupplier");
+		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(request.getParameter("pCategory"))));
+		prod.setSupplier(supplierDaoImpl.findBySuppId(Integer.parseInt(request.getParameter("pSupplier"))));
 		
 		String filepath=request.getSession().getServletContext().getRealPath("/");
 		String filename=file.getOriginalFilename();
-		productDaoImpl.insertProduct(prod);
+		
+		prod.setImgName(filename);
+		productDaoImpl.updateProd(prod);
 		System.out.println("file path"+filepath);
 		try{
 			byte imagebyte[]=file.getBytes();
-			BufferedOutputStream fos=new BufferedOutputStream(new FileOutputStream(filepath+"resources/images/"+filename));
+			BufferedOutputStream fos=new BufferedOutputStream(new FileOutputStream(filepath+"/resources/"+filename));
 			fos.write(imagebyte);
 			fos.close();
 		}

@@ -29,7 +29,7 @@
 <form method="POST" action="<c:url value="/admin/productUpdate"/>" enctype="multipart/form-data">
 <span id="reauth-email" class="reauth-email"></span>
 
-<input type="hidden" name="pid" value="${prod.pid }">
+<input type="hidden" name="pId" value="${prod.pid }">
 <h4 class="input-title">Product Name</h4>
 <input value="${prod.productName }" type="text" name="pName" required>
 

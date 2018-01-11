@@ -31,6 +31,11 @@ public class indexController {
 	public String index() {
 		return "index";
 	}
+	
+	@RequestMapping("/index")
+	public String home() {
+		return "index";
+	}
 
 	@RequestMapping("/goToRegister")
 	public String goToRegister() {

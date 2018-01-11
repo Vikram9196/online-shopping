@@ -47,7 +47,7 @@
 <td><c:out value="${p.productName }"></c:out></td>
 <td><c:out value="${p.qty }"></c:out></td>
 <td><c:out value="${p.price }"></c:out></td>
-<td><img src="${pageContext.request.contextPath }/resources/${p.imgname}" height="50px" width="50px"></td>
+<td><img src="${pageContext.request.contextPath }/resources/${p.imgName}" height="50px" width="50px"></td>
 <td><c:out value="${p.qty * p.price }"></c:out></td>
 <td class="span2">
 <c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>

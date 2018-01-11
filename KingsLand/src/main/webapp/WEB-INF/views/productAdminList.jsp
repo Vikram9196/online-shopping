@@ -29,7 +29,9 @@
 <div class="container">
 <h2>Product List for Admin</h2>
 <table class="table table-hover" id="apl" class="display" border="2" width="80" align="center">
-<tr><th>PID</th>
+<tr>
+<th>S No.</th>
+<th>PID</th>
 <th>Product Name</th>
 <th>Product Supplier</th>
 <th>Product Category</th>
@@ -55,10 +57,11 @@
 <td class="span3"><c:out value="${p.description }"></c:out></td>
 <td><c:out value="${p.price }"></c:out></td>
 <td><c:out value="${p.stock }"></c:out></td>
-<td><img src="${pageContext.request.contextPath }/resources/images${p.imgName}" height="50px" width="50px"></td>
-<td ><c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
+<td><img src="${pageContext.request.contextPath }/resources/${p.imgName}" height="50px" width="50px"></td>
+<td class="span4">
+<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
 <a class="btn btn-info" role="button"  href="${contextRoot }/admin/updateProd?pid=<c:out value="${p.pid }"></c:out>">Edit</a>
-<a class="btn btn-danger" role="button" href="<c:url value="/admin/deleteprod/${p.pid }"/>">Delete</a></td>
+<a class="btn btn-danger" role="button" href="<c:url value="/admin/deleteProd/${p.pid }"/>">Delete</a></td>
 </tr>
 </c:forEach>
 </table>

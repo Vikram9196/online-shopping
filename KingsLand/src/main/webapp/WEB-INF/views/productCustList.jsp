@@ -46,16 +46,16 @@
 <c:forEach varStatus="st" var="p"  items="${prodList}">
 <tr>
 <td><c:out value="${p.pid }"></c:out></td>
-<td><c:out value="${p.pname }"></c:out></td>
-<td><c:out value="${p.supplier.sname }"></c:out></td>
-<td><c:out value="${p.category.cname}"></c:out></td>
+<td><c:out value="${p.productName }"></c:out></td>
+<td><c:out value="${p.supplier.supplierName }"></c:out></td>
+<td><c:out value="${p.category.categoryName}"></c:out></td>
 <td class="span3"><c:out value="${p.description }"></c:out></td>
 <td><c:out value="${p.price }"></c:out></td>
 <td><c:out value="${p.stock }"></c:out></td>
 <td><img src="${pageContext.request.contextPath }/resources/images/${p.imgName}" height="50px" width="50px"></td>
 <td class="span2">
 <c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-<a class="btn btn-info" role="button" href="<c:url value="/prodDetails/${ p.pid}"/>">Details</a>
+<a class="btn btn-info" role="button" href="<c:url value="/prodDetails/${p.pid}"/>">Details</a>
 <td>
 
 </tr>

@@ -32,9 +32,8 @@
  
  <div class="collapse navbar-collapse" id="navDemo">
  <ul class="nav navbar-nav">
- <li> <a href="index">Home</a></li>
+ <li> <a href="${pageContext.request.contextPath }/index">Home</a></li>
  <li><a href="contact"><i class="fa fa-address-book" aria-hidden="true"></i></a></li>
- <li><a href="productList">Product List</a></li>
  <li><a href="${pageContext.request.contextPath }/admin/adding">Admin</a></li>
  <li class="dropdown">
  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
