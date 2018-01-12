@@ -49,7 +49,7 @@
  
 
 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-  href="#">Category Choice<span class="caret"></span></a>
+  href="${pageContext.request.contextPath}">Category Choice<span class="caret"></span></a>
      <ul class="dropdown-menu">
     
     <c:forEach var="catVal" items="${catList }">
@@ -78,6 +78,8 @@
   				<c:if test="${pageContext.request.userPrincipal.name != null }">
   					<li><a>Welcome: ${pageContext.request.userPrincipal.name }</a></li>
   					<li><a href="${pageContext.request.contextPath }/logout">Logout</a></li>
+  					<li><a href="${pageContext.request.contextPath }/goToCart">My Cart
+  					<i class="fa fa-cart-plus" aria-hidden="true"></i></a></li>
   				</c:if>
     				
     				

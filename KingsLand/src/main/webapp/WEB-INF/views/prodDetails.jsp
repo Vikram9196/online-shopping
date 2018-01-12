@@ -32,7 +32,7 @@
 <div class="row">
 <div class="col-md-4 item-photo">
 
-<img style="max-width:100%; margin-top:30px;" src="${pageContext.request.contextPath }/resources/images/${product.imgName}"/>
+<img style="max-width:100%; margin-top:30px;" src="${pageContext.request.contextPath }/resources/${product.imgName}"/>
 </div>
 
 <div class="col-md-5" style="border:opx solid  gray">
@@ -41,6 +41,7 @@
 <h4>Price - ${product.price } Rs.</h4>
 <h5>Supplier - ${product.supplier.supplierName }</h5>
 <div class="section" style="padding-bottom:20px;">
+
 <form action="${pageContext.request.contextPath }/addToCart" method="post">
 <input type="hidden" value="${product.pid }" name="pId"/> 
 <input type="hidden" value="${product.price }" name="pPrice"/> 
@@ -49,7 +50,7 @@
 <label>Qty:</label>
 <input type="number" class="form-control" name="pQty" required/><br><br>
 <input class="btn btn-warning btn-lg" type="submit" value="Add To Cart">
-<h6><span class="glyphicon-heart-empty" style="cursor:pointer; color:red;"></span>Wish List</h6> 
+<h6><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer; color:red;"></span>Wish List</h6> 
 </form>
 
 </div>

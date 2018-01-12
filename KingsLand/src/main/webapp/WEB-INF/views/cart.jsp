@@ -37,7 +37,7 @@
 <th>Action</th>
 </tr>
 
-<c:if test="${empty prodList }">
+<c:if test="${empty cartInfo }">
 <tr>
 <td colspan="10" align="center">No Record Exists!!</td>
 </tr>
@@ -53,17 +53,19 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
 <a class="btn btn-danger" role="button" href="<c:url value="/deletePCart/${ p.cartId}"/>">Delete</a>
 <td>
-
 </tr>
 </c:forEach>
 <td>
 <c:set var="gtot" value="${gtot+p.price*p.qty }"></c:set>
-<span class="col-lg-9" align="right"><label>Grand Total</label><c:out value="${gtot }"></c:out></span></td>
+<span class="col-lg-9" align="right"><label>Grand Total</label><c:out value="${gtot }"></c:out></span>
+</td>
 
 
 <tfoot>
 <td><a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath }/index">Continue Shopping</a></td>
 <td><a class="btn btn-success btn-lg" href="${pageContext.request.contextPath }/checkout">Checkout</a></td>
+
+</tfoot>
 </table>
 </div>
 

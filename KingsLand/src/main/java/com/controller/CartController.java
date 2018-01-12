@@ -50,41 +50,44 @@ public class CartController {
 	
 	@RequestMapping(value="/addToCart", method=RequestMethod.POST)
 	@Transactional
-	public ModelAndView addtocart(HttpServletRequest request){
+	public ModelAndView addtoCart(HttpServletRequest request){
 		 ModelAndView mv=new  ModelAndView();
 		 Principal principal= request.getUserPrincipal();
 		 String userEmail =principal.getName();
 		 
 		 try
 		 {
-			 int pid= Integer.parseInt(request.getParameter("pId"));
-			 double price=Double.parseDouble(request.getParameter("pPrice"));
-			 int qty=Integer.parseInt(request.getParameter("pQty"));
+			 int pid= Integer.parseInt(request.getParameter("pid"));
 			 String productName=request.getParameter("pName");
+			 int qty=Integer.parseInt(request.getParameter("pQty"));
+			 double price=Double.parseDouble(request.getParameter("pPrice"));
 			 String imgName=request.getParameter("imgName");
+			 
 			 Cart cartExist= cartDaoImpl.getCartById(pid, userEmail);
 			 if(cartExist== null)
 			 {
 				Cart c=new Cart();
-				c.setCartPrice(price);
-				c.setCartProductId(pid);
-				c.setCartStock(qty);
-				c.setCartImage(imgName);
-				c.setCartProductName(productName);
 				
-				User user=userDaoImpl.findUserByEmail(userEmail);
-				c.setCartUserDetails(user);
+				c.setCartProductId(pid);
+				c.setCartProductName(productName);
+				c.setCartQuantity(qty);
+				c.setCartPrice(price);
+				c.setCartImage(imgName);
+				
+				User u=userDaoImpl.findUserByEmail(userEmail);
+				c.setCartUserDetails(u);
 				cartDaoImpl.insertCart(c);
 			 }
-			 else if (cartExist != null)
+			 else if (cartExist!=null)
 			 {
 				 Cart c=new Cart();
 				 c.setCartId(cartExist.getCartId());
-				 c.setCartPrice(price);
-				 c.setCartProductId(pid);
-				 c.setCartStock(cartExist.getCartStock()+qty);
-				 c.setCartImage(imgName);
 				 c.setCartProductName(productName);
+				 c.setCartProductId(pid);
+				 c.setCartQuantity(cartExist.getCartQuantity()+qty);
+				 c.setCartPrice(price);
+				 c.setCartImage(imgName);
+				
 					
 				 User u=userDaoImpl.findUserByEmail(userEmail);
 				 c.setCartUserDetails(u);
@@ -128,15 +131,39 @@ public class CartController {
 		 Double total= Double.parseDouble(req.getParameter("total"));
 		 String payment=req.getParameter("payment");
 		 
-		 User c= userDaoImpl.findUserByEmail(userEmail);
-		 order.setUser(c);
+		 User users= userDaoImpl.findUserByEmail(userEmail);
+		 order.setUser(users);
 		 order.setTotal(total);
 		 order.setPayment(payment);
 		 ordersDaoImpl.insertOrder(order);
-		 mv.addObject("orderDetails",c);
+		 mv.addObject("orderDetails",users);
 		 mv.setViewName("ack");
 		 return mv;
 		 
 
 }
+	
+	@RequestMapping(value="/deletePCart/{cartId}")
+	public ModelAndView deleteCartItem(@PathVariable("cartId")int cartId,HttpServletRequest req)
+	{
+		ModelAndView mv=new ModelAndView();
+		Principal principal=req.getUserPrincipal();
+		String userEmail=principal.getName();
+		cartDaoImpl.deleteCart(cartId);
+		mv.addObject("cartInfo",cartDaoImpl.findByCartId(userEmail));
+		mv.setViewName("cart");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/goToCart",method=RequestMethod.GET)
+	public ModelAndView gotocart(HttpServletRequest req)
+	{
+		ModelAndView mv=new ModelAndView();
+		Principal principal=req.getUserPrincipal();
+		String userEmail=principal.getName();
+		mv.addObject("cartInfo",cartDaoImpl.findByCartId(userEmail));
+		mv.setViewName("cart");
+		return mv;
+	}
 }

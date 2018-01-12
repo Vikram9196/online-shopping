@@ -27,20 +27,21 @@ public class Cart implements Serializable {
 	private User cartUserDetails;
 
 	private double cartPrice;
-	private int  cartStock;
+	private int  cartQuantity;
 	private String cartImage;
 	private String cartProductName;
 	
 	public Cart(){
 		
 	}
-	public Cart(int cartId, int cartProductId, User cartUserDetails,int cartPrice,int cartStock,String cartProductName)
+	public Cart(int cartId, int cartProductId, User cartUserDetails,Double cartPrice,int cartQuantity,String cartProductName)
 	{
 		this.cartId= cartId;
 		this.cartProductId= cartProductId;
 		this.cartUserDetails= cartUserDetails;
 		this.cartPrice= cartPrice;
-		this.cartStock= cartStock;
+		this.cartQuantity= cartQuantity;
+		this.cartProductName=cartProductName;
 		
 	}
 	public int getCartId() {
@@ -67,11 +68,11 @@ public class Cart implements Serializable {
 	public void setCartPrice(double cartPrice) {
 		this.cartPrice = cartPrice;
 	}
-	public int getCartStock() {
-		return cartStock;
+	public int getCartQuantity() {
+		return cartQuantity;
 	}
-	public void setCartStock(int cartStock) {
-		this.cartStock = cartStock;
+	public void setCartQuantity(int cartQuantity) {
+		this.cartQuantity = cartQuantity;
 	}
 	public String getCartImage() {
 		return cartImage;
