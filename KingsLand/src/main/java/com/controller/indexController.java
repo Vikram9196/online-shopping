@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.DaoImpl.CategoryDaoImpl;
-import com.DaoImpl.ProductDaoImpl;
-import com.DaoImpl.UserDaoImpl;
+import com.DaoImpl.*;
 import com.model.User;
 
 @Controller
@@ -26,6 +24,12 @@ public class indexController {
 
 	@Autowired
 	CategoryDaoImpl categoryDaoImpl;
+	
+	@Autowired
+	CartDaoImpl cartDaoImpl;
+	
+	@Autowired
+	OrdersDaoImpl ordersDaoImpl;
 
 	@RequestMapping("/")
 	public String index() {

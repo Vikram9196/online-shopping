@@ -25,30 +25,19 @@
 
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 <div class="container">
-<h2>Supplier List for Admin</h2>
-<table class="table table-hover" id="asl" class="display" border="2" width="80" align="center">
-<tr><th>Sr. No</th>
-<th>SID</th>
-<th>Supplier Name</th>
-<th class="span2">Action</th>
-</tr>
+<c:url value="/admin/supplierUpdate" var="pru"></c:url>
+<form method="POST" action="<c:url value="/admin/supplierUpdate"/>" enctype="multipart/form-data">
+<span id="reauth-email" class="reauth-email"></span>
 
-<c:if test="${empty satList }">
-<tr>
-<td colspan="10" align="center">No Record Exists!!</td>
-</tr>
-</c:if>
-<c:forEach varStatus="st" var="p"  items="${satList}">
-<tr>
-<td><c:out value="${st.count }"></c:out></td>
-<td><c:out value="${p.sid }"></c:out></td>
-<td><c:out value="${p.supplierName }"></c:out></td>
-<td><c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-<a class="btn btn-info" role="button" href="${contextRoot }/admin/updateSupp?sid=<c:out value="${p.sid }"></c:out>">Edit</a>
-<a class="btn btn-danger" role="button" href="<c:url value="/admin/deleteSupp/${p.sid }"/>">Delete</a></td>
-</tr>
-</c:forEach>
-</table>
+<input type="hidden" name="sId" value="${supp.sid }">
+<h4 class="input-title">Product Name</h4>
+<input value="${supp.supplierName }" type="text" name="sName" required>
+<br><br>
+
+<button class="btn btn-lg btn-primary" type="submit">Save</button>
+<button class="btn btn-lg btn-warning" type="reset">Cancel</button>
+</form>
 </div>
+
 </body>
 </html>

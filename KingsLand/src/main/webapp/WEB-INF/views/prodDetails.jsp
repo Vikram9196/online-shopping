@@ -36,7 +36,7 @@
 </div>
 
 <div class="col-md-5" style="border:opx solid  gray">
-<h3>P ${product.productName } </h3>
+<h3> ${product.productName } </h3>
 <h4>${product.description }</h4>
 <h4>Price - ${product.price } Rs.</h4>
 <h5>Supplier - ${product.supplier.supplierName }</h5>

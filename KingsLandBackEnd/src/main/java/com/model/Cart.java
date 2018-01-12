@@ -8,11 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
+@Table(name="Cart")
 public class Cart implements Serializable {
 
 	
@@ -22,7 +24,7 @@ public class Cart implements Serializable {
 	
 	private int cartProductId;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="userMailId")
 	private User cartUserDetails;
 
@@ -86,5 +88,6 @@ public class Cart implements Serializable {
 	public void setCartProductName(String cartProductName) {
 		this.cartProductName = cartProductName;
 	}
+
 
 }

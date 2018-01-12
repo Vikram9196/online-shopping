@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.Dao.SupplierDao;
+import com.model.Product;
 import com.model.Supplier;
 
 @Repository
@@ -60,6 +61,23 @@ public class SupplierDaoImpl implements SupplierDao {
 		}
 		
 		return supplier;
+	}
+	
+	public void updateSupplier(Supplier ss)
+	{
+		Session session	=sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(ss);
+		session.getTransaction().commit();
+	}
+	
+	public void deleteSupplier(int sid)
+	{
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		Supplier ss=(Supplier)session.get(Supplier.class, sid);
+		session.delete(ss);
+		session.getTransaction().commit();
 	}
 
 }

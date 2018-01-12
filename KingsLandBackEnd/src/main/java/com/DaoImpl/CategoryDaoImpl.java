@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.Dao.CategoryDao;
 import com.model.Category;
+import com.model.Product;
 
 @Repository
 @Service
@@ -59,5 +60,23 @@ public class CategoryDaoImpl implements CategoryDao {
 		}
 		
 		return c;
+	}
+	
+	
+	public void updateCategory(Category cc)
+	{
+		Session session	=sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(cc);
+		session.getTransaction().commit();
+	}
+	
+	public void deleteCategory(int cid)
+	{
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		Category cc=(Category)session.get(Category.class, cid);
+		session.delete(cc);
+		session.getTransaction().commit();
 	}
 }

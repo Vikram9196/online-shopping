@@ -44,27 +44,30 @@
 </c:if>
 <c:forEach varStatus="st" var="p"  items="${cartInfo}">
 <tr>
-<td><c:out value="${p.productName }"></c:out></td>
-<td><c:out value="${p.qty }"></c:out></td>
-<td><c:out value="${p.price }"></c:out></td>
-<td><img src="${pageContext.request.contextPath }/resources/${p.imgName}" height="50px" width="50px"></td>
-<td><c:out value="${p.qty * p.price }"></c:out></td>
+<td><c:out value="${cart.productName}"></c:out></td>
+<td><c:out value="${cart.qty}"></c:out></td>
+<td><c:out value="${cart.price}"></c:out></td>
+<td><img src="${pageContext.request.contextPath }/resources/${cart.imgName}" height="50px" width="50px"></td>
+<td><c:out value="${cart.qty * cart.price }"></c:out></td>
 <td class="span2">
 <c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-<a class="btn btn-danger" role="button" href="<c:url value="/deletePCart/${ p.cartId}"/>">Delete</a>
-<td>
+<a class="btn btn-danger" role="button" href="<c:url value="/deletePCart/${ cart.cartId}"/>">Delete</a>
+</td>
 </tr>
 </c:forEach>
+<tr>
 <td>
-<c:set var="gtot" value="${gtot+p.price*p.qty }"></c:set>
+
+<c:set var="gtot" value="${gtot+cart.price*cart.qty }"></c:set>
 <span class="col-lg-9" align="right"><label>Grand Total</label><c:out value="${gtot }"></c:out></span>
 </td>
-
+</tr>
 
 <tfoot>
+<tr>
 <td><a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath }/index">Continue Shopping</a></td>
 <td><a class="btn btn-success btn-lg" href="${pageContext.request.contextPath }/checkout">Checkout</a></td>
-
+</tr>
 </tfoot>
 </table>
 </div>

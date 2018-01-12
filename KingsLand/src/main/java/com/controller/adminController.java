@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.DaoImpl.CategoryDaoImpl;
-import com.DaoImpl.ProductDaoImpl;
-import com.DaoImpl.SupplierDaoImpl;
+import com.DaoImpl.*;
 import com.model.Category;
 import com.model.Product;
 import com.model.Supplier;
@@ -38,6 +36,12 @@ public class adminController {
 
 	@Autowired
 	ProductDaoImpl productDaoImpl;
+	
+	@Autowired
+	CartDaoImpl cartDaoImpl;
+	
+	@Autowired
+	OrdersDaoImpl ordersDaoImpl;
 
 	@RequestMapping("/adding")
 	public String adding() {
@@ -197,5 +201,64 @@ public class adminController {
 		return "redirect:/admin/productList?update";
 	}
 	
+	@RequestMapping("/deleteCat/{cid}")
+	public String deleteCategory(@PathVariable("cid")int cid)
+	{
+		categoryDaoImpl.deleteCategory(cid);
+		return "redirect:/admin/categoryList?del";
+	}
 	
+	@RequestMapping("/updateCat")
+	public ModelAndView updateCategory(@RequestParam("cid")int cid)
+	{
+		ModelAndView mv= new ModelAndView();
+		Category c=categoryDaoImpl.findByCatId(cid);
+		mv.addObject("cat",c);
+		/*mv.addObject("catList", categoryDaoImpl.retrive());
+		mv.addObject("satList", supplierDaoImpl.retrive());*/
+		mv.setViewName("updateCategory");
+		return mv;
+	}
+	@RequestMapping(value="/categoryUpdate", method=RequestMethod.POST)
+	public String updateCat(HttpServletRequest request)
+	{
+		String cid = request.getParameter("cId");
+		Category cat = new Category();
+		cat.setCid(Integer.parseInt(cid));
+		cat.setCategoryName(request.getParameter("cName"));
+		categoryDaoImpl.updateCategory(cat);
+		
+		return "redirect:/admin/categoryList?update";
+}
+	
+	@RequestMapping("/deleteSupp/{sid}")
+	public String deleteSupplier(@PathVariable("sid")int sid)
+	{
+		supplierDaoImpl.deleteSupplier(sid);
+		return "redirect:/admin/supplierList?del";
+	}
+	
+	@RequestMapping("/updateSupp")
+	public ModelAndView updateSupplier(@RequestParam("sid")int sid)
+	{
+		ModelAndView mv= new ModelAndView();
+		Supplier s=supplierDaoImpl.findBySuppId(sid);
+		mv.addObject("supp",s);
+		/*mv.addObject("catList", categoryDaoImpl.retrive());
+		mv.addObject("satList", supplierDaoImpl.retrive());*/
+		mv.setViewName("updateSupplier");
+		return mv;
+	}
+	@RequestMapping(value="/supplierUpdate", method=RequestMethod.POST)
+	public String updateSupp(HttpServletRequest request)
+	{
+		String sid = request.getParameter("sId");
+		Supplier supp = new Supplier();
+		supp.setSid(Integer.parseInt(sid));
+		supp.setSupplierName(request.getParameter("sName"));
+		supplierDaoImpl.updateSupplier(supp);
+		
+		return "redirect:/admin/supplierList?update";
+}
+
 }

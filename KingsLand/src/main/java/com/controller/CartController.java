@@ -57,7 +57,7 @@ public class CartController {
 		 
 		 try
 		 {
-			 int pid= Integer.parseInt(request.getParameter("pid"));
+			 int pid= Integer.parseInt(request.getParameter("pId"));
 			 String productName=request.getParameter("pName");
 			 int qty=Integer.parseInt(request.getParameter("pQty"));
 			 double price=Double.parseDouble(request.getParameter("pPrice"));
@@ -80,18 +80,18 @@ public class CartController {
 			 }
 			 else if (cartExist!=null)
 			 {
-				 Cart c=new Cart();
-				 c.setCartId(cartExist.getCartId());
-				 c.setCartProductName(productName);
-				 c.setCartProductId(pid);
-				 c.setCartQuantity(cartExist.getCartQuantity()+qty);
-				 c.setCartPrice(price);
-				 c.setCartImage(imgName);
+				 Cart cart=new Cart();
+				 cart.setCartId(cartExist.getCartId());
+				 cart.setCartProductName(productName);
+				 cart.setCartProductId(pid);
+				 cart.setCartQuantity(cartExist.getCartQuantity()+qty);
+				 cart.setCartPrice(price);
+				 cart.setCartImage(imgName);
 				
 					
 				 User u=userDaoImpl.findUserByEmail(userEmail);
-				 c.setCartUserDetails(u);
-					cartDaoImpl.updateCart(c);
+				 cart.setCartUserDetails(u);
+					cartDaoImpl.updateCart(cart);
 			 }
 			 
 			 mv.addObject("cartInfo",cartDaoImpl.findByCartId(userEmail));
