@@ -38,14 +38,14 @@
 <form action="${pageContext.request.contextPath }/orderprocess" method="post">
 <c:set var="gtot" value="0"></c:set>
 <c:forEach var="c" items="${cart }">
-<c:set var="gtot" value="${gtot+c.price*c.qty }"></c:set>
+<c:set var="gtot" value="${gtot+c.cartPrice*c.cartQuantity }"></c:set>
 </c:forEach>
 <div class="well">
 <table>
-<tr><td colspan="3">NAME</td><td>${users.name }</td></tr>
-<tr><td colspan="3">EMAIL</td><td>${users.email }</td></tr>
-<tr><td colspan="3">ADDRESS</td><td>${users.address }</td></tr>
-<tr><td colspan="3">PHONE</td><td>${users.number }</td></tr>
+<tr><td colspan="3">NAME</td><td>${user.name }</td></tr>
+<tr><td colspan="3">EMAIL</td><td>${user.email }</td></tr>
+<tr><td colspan="3">ADDRESS</td><td>${user.address }</td></tr>
+<tr><td colspan="3">PHONE</td><td>${user.phone}</td></tr>
 </table>
 
 <div class="outer">

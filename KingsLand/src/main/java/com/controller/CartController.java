@@ -66,32 +66,32 @@ public class CartController {
 			 Cart cartExist= cartDaoImpl.getCartById(pid, userEmail);
 			 if(cartExist== null)
 			 {
-				Cart c=new Cart();
+				Cart cm=new Cart();
 				
-				c.setCartProductId(pid);
-				c.setCartProductName(productName);
-				c.setCartQuantity(qty);
-				c.setCartPrice(price);
-				c.setCartImage(imgName);
+				cm.setCartProductId(pid);
+				cm.setCartProductName(productName);
+				cm.setCartQuantity(qty);
+				cm.setCartPrice(price);
+				cm.setCartImage(imgName);
 				
 				User u=userDaoImpl.findUserByEmail(userEmail);
-				c.setCartUserDetails(u);
-				cartDaoImpl.insertCart(c);
+				cm.setCartUserDetails(u);
+				cartDaoImpl.insertCart(cm);
 			 }
 			 else if (cartExist!=null)
 			 {
-				 Cart cart=new Cart();
-				 cart.setCartId(cartExist.getCartId());
-				 cart.setCartProductName(productName);
-				 cart.setCartProductId(pid);
-				 cart.setCartQuantity(cartExist.getCartQuantity()+qty);
-				 cart.setCartPrice(price);
-				 cart.setCartImage(imgName);
+				 Cart cm=new Cart();
+				 cm.setCartId(cartExist.getCartId());
+				 cm.setCartProductName(productName);
+				 cm.setCartProductId(pid);
+				 cm.setCartQuantity(cartExist.getCartQuantity()+qty);
+				 cm.setCartPrice(price);
+				 cm.setCartImage(imgName);
 				
 					
 				 User u=userDaoImpl.findUserByEmail(userEmail);
-				 cart.setCartUserDetails(u);
-					cartDaoImpl.updateCart(cart);
+				 cm.setCartUserDetails(u);
+					cartDaoImpl.updateCart(cm);
 			 }
 			 
 			 mv.addObject("cartInfo",cartDaoImpl.findByCartId(userEmail));
