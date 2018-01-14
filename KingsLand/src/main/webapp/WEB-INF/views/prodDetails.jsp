@@ -42,6 +42,22 @@
 <h5>Supplier - ${product.supplier.supplierName }</h5>
 <div class="section" style="padding-bottom:20px;">
 
+
+<c:if test="${pageContext.request.userPrincipal.name==null }">
+<form action="${pageContext.request.contextPath }/goToLogin" method="post">
+<input type="hidden" value="${product.pid }" name="pId"/> 
+<input type="hidden" value="${product.price }" name="pPrice"/> 
+<input type="hidden" value="${product.productName}" name="pName"/> 
+<input type="hidden" value="${product.imgName }" name="imgName"/> 
+<label>Qty:</label>
+<input type="number" class="form-control" name="pQty" required/><br><br>
+
+<input class="btn btn-warning btn-lg" type="submit" value="Add To Cart">
+<h6><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer; color:red;"></span>Wish List</h6> 
+</form>
+</c:if>
+
+<c:if test="${pageContext.request.userPrincipal.name!=null }">
 <form action="${pageContext.request.contextPath }/addToCart" method="post">
 <input type="hidden" value="${product.pid }" name="pId"/> 
 <input type="hidden" value="${product.price }" name="pPrice"/> 
@@ -49,10 +65,11 @@
 <input type="hidden" value="${product.imgName }" name="imgName"/> 
 <label>Qty:</label>
 <input type="number" class="form-control" name="pQty" required/><br><br>
+
 <input class="btn btn-warning btn-lg" type="submit" value="Add To Cart">
 <h6><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer; color:red;"></span>Wish List</h6> 
 </form>
-
+</c:if>
 </div>
 </div>
 

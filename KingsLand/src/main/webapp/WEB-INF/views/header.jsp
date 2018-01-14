@@ -34,7 +34,15 @@
  <ul class="nav navbar-nav">
  <li> <a href="${pageContext.request.contextPath }/index">Home</a></li>
  <li><a href="contact"><i class="fa fa-address-book" aria-hidden="true"></i></a></li>
- <li><a href="${pageContext.request.contextPath }/admin/adding">Admin</a></li>
+ <c:if test="${pageContext.request.userPrincipal.name==null }">
+  					<li><a href="${pageContext.request.contextPath }/goToAdminLogin">Admin</a></li> 
+  				</c:if>
+  				
+  <c:if test="${pageContext.request.userPrincipal.name != null }">				
+ <li><a href="${pageContext.request.contextPath }/admin/adding">Admin</a>
+ 	</li>
+ 	</c:if>
+ 	
  <li class="dropdown">
  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
  
@@ -90,6 +98,7 @@
  
  </div>
 </nav>
+
 
 </body>
 </html>

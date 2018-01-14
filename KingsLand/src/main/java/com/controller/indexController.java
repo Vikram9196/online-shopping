@@ -85,6 +85,12 @@ public class indexController {
 	{
 	return "login";
 	}
+	
+	@RequestMapping("/goToAdminLogin")
+	public String adminlogin()
+	{
+	return "adminLogin";
+	}
 		
 	@RequestMapping("/userLogged")
 	public String userLogged()

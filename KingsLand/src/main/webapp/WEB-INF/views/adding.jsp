@@ -37,23 +37,25 @@
 <div class="panel-heading">
 	
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#tab1" data-toggle="tab">Supplier</a>
-		<li><a href="#tab2" data-toggle="tab">Category</a>
-		<li><a href="#tab3" data-toggle="tab">Product</a>
+		<li class="active"><a href="#tab1" data-toggle="tab">Supplier</a></li>
+		<li><a href="#tab2" data-toggle="tab">Category</a></li>
+		<li><a href="#tab3" data-toggle="tab">Product</a></li>
 	</ul>
 </div>
+
 
 <div class="panel-body">
 <div class="tab-content">
 
 <div class="tab-pane fade in active" id="tab1">
+
 <form method="POST" action="<c:url value="/admin/saveSupp"/>" class="form-signin">
 <span id="reauth-email" class="reauth-email"></span>
 <h4 class="input-title">Supplier Id</h4>
-<input class="form-control" type="number" name="sid" required>
+<input class="form-control" type="number" name="sid" required/>
 
 <h4 class="input-title">Supplier Name</h4>
-<input class="form-control" type="text" name="supplierName" required><br>
+<input class="form-control" type="text" name="supplierName" required/><br>
 
 <button class="btn btn-lg btn-primary" type="submit">Save</button>
 <button class="btn btn-lg btn-warning" type="reset">Cancel</button>
@@ -61,14 +63,15 @@
 </form>
 </div>
 
-<div class="tab-pane fade" id="tab2">
+<div class="tab-pane fade " id="tab2">
+
 <form method="POST" action="<c:url value="/admin/saveCat"/>" class="form-signin">
 <span id="reauth-email" class="reauth-email"></span>
 <h4 class="input-title">Category Id</h4>
-<input class="form-control" type="number" name="cid" required>
+<input class="form-control" type="number" name="cid" required/>
 
 <h4 class="input-title">Category Name</h4>
-<input class="form-control" type="text" name="categoryName" required><br>
+<input class="form-control" type="text" name="categoryName" required/><br>
 
 <button class="btn btn-lg btn-primary" type="submit">Save</button>
 <button class="btn btn-lg btn-warning" type="reset">Cancel</button>
@@ -76,19 +79,20 @@
 </div>
 
 <div class="tab-pane fade" id="tab3">
+
 <form method="POST" action="<c:url value="/admin/saveProduct"/>" class="form-signin" enctype="multipart/form-data">
 <span id="reauth-email" class="reauth-email"></span>
 <h4 class="input-title">Product Name</h4>
-<input class="form-control" type="text" name="pName" required>
+<input class="form-control" type="text" name="pName" required/>
 
 <h4 class="input-title">Product Description</h4>
-<input class="form-control" type="text" name="pDescription" required>
+<input class="form-control" type="text" name="pDescription" required/>
 
 <h4 class="input-title">Product Price</h4>
-<input class="form-control" type="text" name="pPrice" required>
+<input class="form-control" type="text" name="pPrice" required/>
 
 <h4 class="input-title">Product Stock</h4>
-<input class="form-control" type="text" name="pStock" required>
+<input class="form-control" type="text" name="pStock" required/>
 <br>
 <div class="form-group">
 <table>
@@ -118,6 +122,7 @@
 </table>
 </div>
 <div class="fileinput fileinput-new" data-provides="fileinput">
+
 <td>Product Image</td>
 <td><input class="form-control" type="file" name="file" accept="image/*"></td>
 </div><br>

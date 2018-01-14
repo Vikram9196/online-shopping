@@ -45,13 +45,23 @@ public class adminController {
 
 	@RequestMapping("/adding")
 	public String adding() {
+		
+		
 		return "adding";
 	}
 	
 	@RequestMapping("/admin/index")
 	public String home() {
+		
 		return "index";
 	}
+	
+	@RequestMapping("/goToLogin")
+	public String login()
+	{
+	return "login";
+	}
+	
 	
 	@RequestMapping(value="/saveSupp", method=RequestMethod.POST)
 	@Transactional
