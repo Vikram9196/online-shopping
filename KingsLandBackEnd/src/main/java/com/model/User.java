@@ -4,7 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,14 +18,28 @@ import org.springframework.stereotype.Component;
 public class User implements Serializable {
 	
       @Id
-      
+      @NotEmpty
+      @Email(message="Enter valid Email-id")
       private String email;
+      
+      @NotNull
+      @NotEmpty(message = "Please enter your Name.")
       private String name;
+      
+      @NotEmpty(message = "Please enter your password.")
+      @Size(min = 4, max = 10, message = "Your password must between 4 and 10 characters")
       private String password;
       
       private String role;
+      
+      @NotEmpty (message = "Please enter your Address.")
       private String address;
+      
+      @NotEmpty(message = "Please enter your Number.")
+      @Size(min = 10, max = 10, message = "Your number must be 10 digits")
+      @Pattern(regexp="(^$|[0-9]{10})")
       private String phone;
+      
       
       private boolean enabled;
 

@@ -29,36 +29,32 @@
  <h2>Registration form</h2>
  <div class="col-lg-12">
  <div class="row">
- <form:form modelAttribute="user" action="${pageContext.request.contextPath }/saveRegister" method="post">
+<form:form modelAttribute="user" action="${pageContext.request.contextPath }/saveRegister" method="post">
  
-  
+  <form:errors path="email" cssClass="error"/>
  <div class="form-group">
  <label>Email:</label><br>
- <input  type="email" name="email" class="form-control" placeholder="enter email"/>
+ <form:input  type="email" path="email" class="form-control" placeholder="enter email"/>
  </div>
- 
+ <form:errors path="password" cssClass="error"/>
  <div class="form-group">
  <label>Password:</label><br>
- <input type="password" name="password" class="form-control" placeholder="enter password"/>
+ <form:input type="password" path="password" class="form-control" placeholder="enter password"/>
  </div>
- 
+ <form:errors path="name" cssClass="error"/>
  <div class="form-group">
  <label>Name:</label><br>
- <input type="text" name="name" class="form-control" placeholder="enter  name"/>
+ <form:input type="text" path="name" class="form-control" placeholder="enter  name"/>
  </div>
- 
- 
- 
-
- 
+<form:errors path="address" cssClass="error"/>
  <div class="form-group">
  <label>Address:</label><br>
- <input  type="text" name="address" class="form-control" placeholder="enter address"/>
+ <form:input  type="text" path="address" class="form-control" placeholder="enter address"/>
  </div>
- 
+ <form:errors path="phone" cssClass="error"/>
  <div class="form-group">
  <label>Mobile Number:</label><br>
- <input type="text" name="phone" class="form-control" placeholder="enter number"/>
+ <form:input type="number" path="phone" class="form-control" placeholder="enter number"/>
  </div>
  
  <br><br>

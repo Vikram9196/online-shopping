@@ -39,7 +39,7 @@
 <th>Price</th>
 <th>Stock</th>
 <th>Image</th>
-<th class="span2">Action</th>
+<th class="span4">Action</th>
 </tr>
 
 <c:if test="${empty prodList }">
@@ -60,7 +60,7 @@
 <td><img src="${pageContext.request.contextPath }/resources/${p.imgName}" height="50px" width="50px"></td>
 <td class="span4">
 <c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-<a class="btn btn-info" role="button"  href="${contextRoot }/admin/updateProd?pid=<c:out value="${p.pid }"></c:out>">Edit</a>
+<a class="btn btn-info" role="button"  href="${contextRoot }/admin/updateProd?pid=<c:out value="${p.pid }"></c:out>">Edit</a><br>
 <a class="btn btn-danger" role="button" href="<c:url value="/admin/deleteProd/${p.pid }"/>">Delete</a></td>
 </tr>
 </c:forEach>
