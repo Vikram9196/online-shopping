@@ -43,8 +43,24 @@
  <li><a href="${pageContext.request.contextPath }/admin/adding">Admin</a>
  	</li>
  	</c:if>
- 	
+ 
+ 
+ <c:if test="${pageContext.request.userPrincipal.name == null }">	
  <li class="dropdown">
+ 
+ <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
+ 
+  <ul class="dropdown-menu">
+       <li><a href="${pageContext.request.contextPath}/goToAdminLogin">Product</a></li>
+       <li><a href="${pageContext.request.contextPath}/goToAdminLogin">Supplier</a></li>
+       <li><a href="${pageContext.request.contextPath}/goToAdminLogin">Category</a></li>
+  </ul>
+</li>
+</c:if>
+
+<c:if test="${pageContext.request.userPrincipal.name != null }">
+<li class="dropdown">
+ 
  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
  
   <ul class="dropdown-menu">
@@ -53,6 +69,7 @@
        <li><a href="${pageContext.request.contextPath}/admin/categoryList">Category</a></li>
   </ul>
 </li>
+</c:if>
  
  
  

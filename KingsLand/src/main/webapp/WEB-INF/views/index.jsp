@@ -14,9 +14,9 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script
+<!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+ -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -24,6 +24,7 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+	
 	<div class="container">
 
 
@@ -39,19 +40,19 @@
 			<div class="carousel-inner">
 				<div class="item active">
 					<img class="img-responsive centre block"
-						src="<spring:url value="/resources/Vikram.jpg"></spring:url>"
+						src="<spring:url value="/resources/download.jpg"></spring:url>"
 						style="width: 100%;">
 				</div>
 
 				<div class="item">
 					<img class="img-responsive centre block"
-						src="<spring:url value="/resources/Viren.jpg"></spring:url>" 
+						src="<spring:url value="/resources/download1.jpg"></spring:url>" 
 						style="width: 100%;">
 				</div>
 
 				<div class="item">
 					<img class="img-responsive centre block"
-						src='<spring:url value="/resources/Balkishan.jpg"></spring:url>'
+						src='<spring:url value="/resources/download2.jpg"></spring:url>'
 						style="width: 100%;">
 				</div>
 			</div>
@@ -66,7 +67,19 @@
 		</div>
 
 	</div>
+	<script type="text/javascript">
+
+	$(document).ready(function() {
+	    $(".dropdown-toggle").dropdown();
+	});
+
+	
+	
+	</script>
+	
                     <jsp:include page="/WEB-INF/views/Footer.jsp"></jsp:include>
+
+
 
 </body>
 </html>

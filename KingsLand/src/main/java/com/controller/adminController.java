@@ -50,7 +50,7 @@ public class adminController {
 		return "adding";
 	}
 	
-	@RequestMapping("/index")
+	@RequestMapping("/admin/index")
 	public String home() {
 		
 		return "index";

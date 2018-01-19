@@ -126,6 +126,7 @@
 <td>Product Image</td>
 <td><input class="form-control" type="file" name="file" accept="image/*"></td>
 </div><br>
+
 <button class="btn btn-lg btn-primary" type="submit">Save</button>
 <button class="btn btn-lg btn-warning" type="reset">Cancel</button>
 </form>

@@ -38,6 +38,8 @@ public class CartController {
 	@Autowired
 	OrdersDaoImpl ordersDaoImpl;
 	
+	
+	
 	@RequestMapping(value="/prodDetails/{pid}", method=RequestMethod.GET)
 	public ModelAndView prodDet(@PathVariable("pid")int pid)
 	{
